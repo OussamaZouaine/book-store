@@ -1,0 +1,53 @@
+@import './variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $primary-color;
+    min-height: 100vh;
+    color: $secondary-color;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: $secondary-color;
+}
+
+img {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    max-width: 1254px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 10px 25px;
+    background-color: $accent-color;
+    color: $secondary-color;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+
+    &:hover {
+        background: #8284ff;
+    }
+}
+
+.rounded {
+    border-radius: 50%;
+    padding: 10px;
+}

@@ -190,13 +190,13 @@ main h1::after {
 main .cards {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  -ms-grid-columns: (minmax(270px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   gap: 40px;
 }
 
 main .cards .card {
-  width: 250px;
+  width: 270px;
   padding: 20px;
   -webkit-box-shadow: 0px 0px 20px rgba(119, 121, 255, 0.15);
           box-shadow: 0px 0px 20px rgba(119, 121, 255, 0.15);
@@ -237,6 +237,10 @@ main .cards .card .info .book-info p {
 main .cards .card .info #price {
   font-weight: 500;
   font-size: 18px;
+}
+
+main .cards .card .info #quantity {
+  display: none;
 }
 
 main .cards .card #add-to-cart {

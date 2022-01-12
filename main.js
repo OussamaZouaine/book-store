@@ -6,7 +6,7 @@ const addBook = document.querySelector('#add-book');
 // const searchBar = document.querySelector('#search-bar');
 const searchInput = document.querySelector('#search');
 
-const booksKey = 'Books';
+const BOOKS_KEY = 'Books';
 
 const books = [];
 
@@ -38,66 +38,17 @@ searchInput.addEventListener('keyup', (e) => {
             book.author.toLowerCase().includes(searchText)
     );
 
-    console.log(filteredBooks);
+    // console.log(filteredBooks);
     displayCards(filteredBooks);
 });
 
-// searchBar.addEventListener('submit', searchABook);
-
-// Search function
-// function searchABook(e) {
-//     e.preventDefault();
-
-//     const searchText = e.target.querySelector('#search');
-//     if (searchText.value === '') {
-//         displayCards(books);
-//         return;
-//     }
-//     console.log(searchText.value);
-//     console.log(books);
-//     const book = books.filter(
-//         (book) =>
-//             book.title.toLowerCase() === searchText.value.toLowerCase() ||
-//             book.author.toLowerCase() === searchText.value.toLowerCase()
-//     );
-
-//     if (book.length === 0) {
-//         cards.innerHTML = `<p>Sorry</p>`;
-//     } else {
-//         displayCards(book);
-//     }
-
-//     console.log(book);
-// }
-
 function saveToLocalStorage(books) {
-    localStorage.setItem(booksKey, JSON.stringify(books));
+    localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
 }
 
 function getFromLocalStorage() {
-    return JSON.parse(localStorage.getItem(booksKey));
+    return JSON.parse(localStorage.getItem(BOOKS_KEY));
 }
-
-const displayCards = (books) => {
-    cards.innerHTML = '';
-    books.map((book) => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `<img
-                            src="./images/book-cover.jpg"
-                            alt="book illustration"
-                        />
-                        <div class="info">
-                            <div class="book-info">
-                                <h2 id="name">${book.title}</h2>
-                                <p id="author">${book.author}</p>
-                            </div>
-                            <h2 id="price">$${book.price}</h2>
-                        </div>
-                        <a href="#" id="add-to-cart" class="btn">add to cart</a>`;
-        cards.append(card);
-    });
-};
 
 function addNewBook(e) {
     e.preventDefault();
@@ -118,7 +69,7 @@ function addNewBook(e) {
 
     books.push(...newBook);
     saveToLocalStorage(books);
-    displayCards(newBook);
+    displayCards(books);
 
     title.value = '';
     author.value = '';
@@ -126,3 +77,25 @@ function addNewBook(e) {
     quantity.value = '';
     addForm.style.display = 'none';
 }
+
+const displayCards = (books) => {
+    cards.innerHTML = '';
+    books.map((book) => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `<img
+                            src="./images/book-cover.jpg"
+                            alt="book illustration"
+                        />
+                        <div class="info">
+                            <div class="book-info">
+                                <h2 id="name">${book.title}</h2>
+                                <p id="author">${book.author}</p>
+                            </div>
+                            <h2 id="price">$${book.price}</h2>
+                            <span id="quantity">${book.quantity}</span>
+                        </div>
+                        <a href="#" id="add-to-cart" class="btn">add to cart</a>`;
+        cards.append(card);
+    });
+};
